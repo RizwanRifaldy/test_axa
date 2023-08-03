@@ -1,23 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
-
+import "./App.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ListUser from "./Page/Users/List/ListUser";
+import Detail from "./Page/Users/Detail/Detail";
+import Album from "./Page/Users/Album/Album";
+import ListPhoto from "./Page/Users/ListPhoto/ListPhoto";
+import DetailPhoto from "./Page/Users/DetailPhoto/DetailPhoto";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ListUser />} />
+          <Route path="/users/:id_user/:name" element={<Detail />} />
+          <Route path="/album/:id_user/:name" element={<Album />} />
+          <Route path="/list-photo/:id_album" element={<ListPhoto />} />
+          <Route path="/photo/:title/:photo" element={<DetailPhoto />} />
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }
